@@ -1,0 +1,32 @@
+from flask import Flask, jsonify
+app = Flask(__name__)
+
+@app.route("/")
+def inicio():
+	return jsonify(
+	{
+ 	"mensaje": "API funcionando",
+ 	"curso": "Desarrollo de APIs"
+ 	}
+)
+
+@app.route('/<nombre>')
+def saludo(nombre):
+	return f"<h1>Hola {nombre}</h1>"
+
+
+@app.route("/alumnos")
+def alumnos():
+	return jsonify([
+ 	{
+ 	"id": 1,
+ 	"nombre": "Ana"
+ 	},
+ 		{
+ 		"id": 2,
+ 		"nombre": "Carlos"
+ 		}
+	 ]
+)
+if __name__ == "__main__":
+ app.run(debug=True)
